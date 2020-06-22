@@ -22,7 +22,7 @@ module Fluent::Plugin
 
     def process(tag, es)
       es.each do |time, record|
-        modsecRecord = convertToModsecRecord(record['message'])
+        modsecRecord = convertToModsecRecord(record['log'])
         router.emit(@tag, time, modsecRecord)
       end
     end
@@ -115,6 +115,10 @@ module Fluent::Plugin
 
     def processSectionB(section)
       hash = Hash.new
+
+      if section.nil?
+        return hash
+      end
 
       # line #1
       if section =~ /.*?\s\S+\s.+\n?/
@@ -235,10 +239,14 @@ module Fluent::Plugin
         # ModSecurity v3 does not log Message information
         section.split(/\n/).each do |line|
           parts = line.split(/:\s/)
-          hash['auditLogTrailer'][parts[0].strip] = parts[1].strip
+          if parts.length() == 2
+            hash['auditLogTrailer'][parts[0].strip] = parts[1].strip
+          end
         end
 
-        hash['auditLogTrailer'].delete('Message')
+        if hash['auditLogTrailer'].key?("Message")
+            hash['auditLogTrailer'].delete('Message')
+        end
         hash['auditLogTrailer'].delete('ModSecurity')
         hash['auditLogTrailer']['messages'] = auditLogTrailerMessages
       end
