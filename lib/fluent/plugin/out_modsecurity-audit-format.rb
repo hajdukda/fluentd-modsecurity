@@ -264,6 +264,8 @@ module Fluent::Plugin
         hash['event_timestamp'] = (Time.at(hash['event_date_seconds']).gmtime).iso8601(3)
       end
 
+      hash['message'] = "Modsecurity information is in the tags of this message"
+
       hash
     end
 
