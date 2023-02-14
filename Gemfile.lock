@@ -7,33 +7,63 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    cool.io (1.5.3-x64-mingw32)
-    dig_rb (1.0.1)
-    fluentd (1.1.0)
+    certstore_c (0.1.7)
+    concurrent-ruby (1.2.0)
+    cool.io (1.7.1)
+    cool.io (1.7.1-x64-mingw32)
+    ffi (1.15.5-x64-mingw32)
+    ffi-win32-extensions (1.0.4)
+      ffi
+    fluentd (1.15.3)
+      bundler
       cool.io (>= 1.4.5, < 2.0.0)
-      dig_rb (~> 1.0.0)
-      http_parser.rb (>= 0.5.1, < 0.7.0)
-      msgpack (>= 0.7.0, < 2.0.0)
-      serverengine (>= 2.0.4, < 3.0.0)
+      http_parser.rb (>= 0.5.1, < 0.9.0)
+      msgpack (>= 1.3.1, < 2.0.0)
+      serverengine (>= 2.3.0, < 3.0.0)
       sigdump (~> 0.2.2)
-      strptime (>= 0.2.2, < 1.0.0)
-      tzinfo (~> 1.0)
+      strptime (>= 0.2.4, < 1.0.0)
+      tzinfo (>= 1.0, < 3.0)
       tzinfo-data (~> 1.0)
+      webrick (>= 1.4.2, < 1.8.0)
       yajl-ruby (~> 1.0)
-    http_parser.rb (0.6.0)
-    msgpack (1.2.2-x64-mingw32)
-    serverengine (2.0.6)
+    fluentd (1.15.3-x64-mingw32)
+      bundler
+      certstore_c (~> 0.1.7)
+      cool.io (>= 1.4.5, < 2.0.0)
+      http_parser.rb (>= 0.5.1, < 0.9.0)
+      msgpack (>= 1.3.1, < 2.0.0)
+      serverengine (>= 2.3.0, < 3.0.0)
+      sigdump (~> 0.2.2)
+      strptime (>= 0.2.4, < 1.0.0)
+      tzinfo (>= 1.0, < 3.0)
+      tzinfo-data (~> 1.0)
+      webrick (>= 1.4.2, < 1.8.0)
+      win32-event (~> 0.6.3)
+      win32-ipc (~> 0.7.0)
+      win32-service (~> 2.3.0)
+      yajl-ruby (~> 1.0)
+    http_parser.rb (0.8.0)
+    msgpack (1.6.0)
+    serverengine (2.3.1)
       sigdump (~> 0.2.2)
     sigdump (0.2.4)
-    strptime (0.2.3)
-    thread_safe (0.3.6)
-    tzinfo (1.2.4)
-      thread_safe (~> 0.1)
-    tzinfo-data (1.2018.3)
+    strptime (0.2.5)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2022.7)
       tzinfo (>= 1.0.0)
-    yajl-ruby (1.3.1)
+    webrick (1.7.0)
+    win32-event (0.6.3)
+      win32-ipc (>= 0.6.0)
+    win32-ipc (0.7.0)
+      ffi
+    win32-service (2.3.2)
+      ffi
+      ffi-win32-extensions
+    yajl-ruby (1.4.3)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
@@ -41,4 +71,4 @@ DEPENDENCIES
   fluent-plugin-modsecurity!
 
 BUNDLED WITH
-   1.16.1
+   1.17.2
